@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Calendar, Users, Award, BookOpen, GraduationCap, ChevronLeft, ChevronRight, Bot, MessageCircle, Sparkles, Zap, Brain, Send, MapPin, Phone, Mail } from 'lucide-react';
+import { Calendar, Users, Award, BookOpen, GraduationCap, ChevronLeft, ChevronRight, Bot, MessageCircle, Sparkles, Zap, Brain, Send, MapPin, Phone, Mail, Facebook, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -163,12 +163,13 @@ const Home = () => {
             </div>
             <div className="text-center">
               <BookOpen className="w-12 h-12 text-teal-600 mx-auto mb-4" />
-              <h3 className="text-3xl font-bold mb-2">13+</h3>
+              <h3 className="text-3xl font-bold mb-2">10
+              </h3>
               <p className="text-gray-600">Faculty Members</p>
             </div>
             <div className="text-center">
               <Award className="w-12 h-12 text-teal-600 mx-auto mb-4" />
-              <h3 className="text-3xl font-bold mb-2">95%</h3>
+              <h3 className="text-3xl font-bold mb-2">85%</h3>
               <p className="text-gray-600">Employment Rate</p>
             </div>
             <div className="text-center">
@@ -521,6 +522,99 @@ const Home = () => {
                 <Mail className="w-5 h-5" />
                 <span>Send us a Message</span>
               </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Facebook Highlight Section */}
+      <section className="py-12 bg-gradient-to-br from-blue-50 to-blue-100">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-8"
+          >
+            <h2 className="text-2xl font-bold mb-3">Stay Connected with Us</h2>
+            <p className="text-gray-600 max-w-xl mx-auto">
+              Follow us on Facebook to stay updated with the latest news, events, and achievements from our department.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="grid md:grid-cols-2 gap-0">
+                {/* Left Side - Facebook Preview */}
+                <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-6 flex flex-col justify-center">
+                  <div className="text-center md:text-left">
+                    <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto md:mx-0 mb-4">
+                      <Facebook className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">Department of Statistics, NSTU</h3>
+                    <p className="text-blue-100 mb-4 text-sm">
+                      Join our Facebook community for updates on news, events, achievements, and networking opportunities.
+                    </p>
+                    <ul className="space-y-2 text-xs text-blue-100">
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                        <span>Latest news and announcements</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                        <span>Upcoming events and seminars</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                        <span>Student achievements and research</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Right Side - Facebook Feed Preview */}
+                <div className="p-6 bg-gray-50">
+                  <div className="space-y-4">
+                    {/* Sample Facebook Post */}
+                    <div className="bg-white rounded-xl p-4 shadow-md">
+                      <div className="flex items-center mb-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-3">
+                          <Facebook className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-gray-800 text-sm">Department of Statistics, NSTU</h4>
+                          <p className="text-xs text-gray-500">2 hours ago</p>
+                        </div>
+                      </div>
+                      <p className="text-gray-700 text-sm mb-3">
+                        🎉 Congratulations to our students who participated in the National Statistics Competition! Your hard work and dedication make us proud! 📊✨
+                      </p>
+                      <div className="bg-gray-100 rounded-lg p-2">
+                        <p className="text-xs text-gray-600">📈 45 likes • 12 comments • 8 shares</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Facebook Follow Button */}
+                  <motion.button
+                    className="w-full mt-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 rounded-lg font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center space-x-2"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => window.open('https://www.facebook.com/statistics.nstu', '_blank')}
+                  >
+                    <Facebook className="w-5 h-5" />
+                    <span>Follow Us on Facebook</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </motion.button>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

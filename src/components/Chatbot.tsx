@@ -80,7 +80,7 @@ Academic Programs:
 
 Department Highlights:
 - Average annual intake: ~50 undergraduate students
-- 13+ faculty members
+- 10 faculty members
 - 95% employment rate for graduates
 - 9+ years of excellence in statistical education
 
@@ -165,6 +165,12 @@ WEBSITE DEVELOPMENT INFORMATION:
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
     const departmentContext = createDepartmentContext();
     
+    // Check if API key is available
+    if (!apiKey) {
+      console.error('VITE_GEMINI_API_KEY is not set');
+      return "I'm sorry, the API key is not configured. Please contact the administrator to set up the Gemini API key.";
+    }
+    
     try {
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
@@ -212,7 +218,19 @@ WEBSITE DEVELOPMENT INFORMATION:
       if (!response.ok) {
         const errorData = await response.json();
         console.error('API Error:', errorData);
-        throw new Error(`API Error: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
+        
+        // Provide more specific error messages
+        if (response.status === 400) {
+          return "I'm sorry, there was an issue with the request format. Please try again.";
+        } else if (response.status === 401) {
+          return "I'm sorry, there's an authentication issue with the API. Please contact the administrator.";
+        } else if (response.status === 403) {
+          return "I'm sorry, access to the AI service is currently restricted. Please try again later.";
+        } else if (response.status === 429) {
+          return "I'm sorry, the AI service is currently busy. Please try again in a few moments.";
+        } else {
+          throw new Error(`API Error: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
+        }
       }
 
       const data = await response.json();
@@ -225,6 +243,12 @@ WEBSITE DEVELOPMENT INFORMATION:
       return aiResponse;
     } catch (error) {
       console.error('Error calling Gemini API:', error);
+      
+      // Check if it's a network error
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        return "I'm sorry, I'm having trouble connecting to the AI service. Please check your internet connection and try again.";
+      }
+      
       return "I'm sorry, I'm having trouble connecting right now. Please try again later or contact the department directly at statistics@nstu.edu.bd";
     }
   };
