@@ -69,6 +69,23 @@ const FacultyProfile = () => {
               </div>
             </div>
 
+            {/* About Section */}
+            {faculty.about && (
+              <motion.div
+                className="p-6 md:p-8 border-b border-gray-200"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+              >
+                <h2 className="text-xl font-semibold mb-4 flex items-center">
+                  About {faculty.name}
+                </h2>
+                <div className="prose max-w-none text-gray-700">
+                  <p>{faculty.about}</p>
+                </div>
+              </motion.div>
+            )}
+
             {/* Content Section */}
             <div className="p-6 md:p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

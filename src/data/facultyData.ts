@@ -34,6 +34,7 @@ export interface FacultyMember {
   joiningDate?: string;
   researchInterests?: string[];
   publications?: Publication[];
+  about?: string;
 }
 
 // Single source of truth for all faculty data
@@ -58,6 +59,7 @@ const facultyData: Record<string, FacultyMember> = {
       'Econometrics',
       'Biostatistics'
     ],
+    about: "Md Shohel Rana is an Associate Professor in the Department of Statistics. His research primarily focuses on Statistical Modeling, Time Series Analysis, Probability Distribution, Econometrics, and Biostatistics. He is dedicated to advancing statistical knowledge and mentoring students in their academic and research pursuits.",
     publications: [
       {
         id: 'rana-2022-1',
@@ -76,15 +78,6 @@ const facultyData: Record<string, FacultyMember> = {
         authors: 'Rana MS, Faruk MO, Hossain MR',
         doi: '10.1234/ijse.2021.005',
         url: 'https://example.com/paper2'
-      },
-      {
-        id: 'rana-2020-1',
-        title: 'Probability Distribution Analysis of Rainfall Data in Coastal Areas of Bangladesh',
-        journal: 'Environmental Statistics Journal',
-        year: 2020,
-        authors: 'Rana MS, Miah MM',
-        doi: '10.1234/esj.2020.012',
-        url: 'https://example.com/paper3'
       }
     ]
   },
@@ -94,21 +87,20 @@ const facultyData: Record<string, FacultyMember> = {
     designation: 'Assistant Professor',
     image: najmaBegum,
     education: [
-      'PhD (Ongoing) - University of Dhaka',
-      'MS (University of Dhaka)',
-      'BSc (University of Dhaka)'
+      'MSc (Jahangirnagar University)',
+      'BSc (Jahangirnagar University)'
     ],
     email: 'najma.stat@nstu.edu.bd',
-    phone: '+8801712345678',
-    bloodGroup: 'B+',
-    joiningDate: '2016-03-15',
+    phone: '+8801721072339',
+    bloodGroup: 'AB+',
+    joiningDate: '2015-12-27',
     researchInterests: [
-      'Biostatistics',
       'Statistical Inference',
-      'Survival Analysis',
-      'Clinical Trials',
-      'Medical Research'
+      'Demography',
+      'Biostatistics',
+      'Modeling'
     ],
+    about: "Najma Begum serves as an Assistant Professor in the Department of Statistics. Her academic and research interests include Statistical Inference, Demography, Biostatistics, and Modeling. She is committed to contributing to the field through her research and teaching.",
     publications: [
       {
         id: 'begum-2023-1',
@@ -118,15 +110,6 @@ const facultyData: Record<string, FacultyMember> = {
         authors: 'Begum N, Rana MS, Akter T',
         doi: '10.1234/ajms.2023.002',
         url: 'https://example.com/paper4'
-      },
-      {
-        id: 'begum-2022-1',
-        title: 'Statistical Methods in Clinical Trials: A Comparative Study',
-        journal: 'Clinical Research Journal',
-        year: 2022,
-        authors: 'Begum N, Tabassum M',
-        doi: '10.1234/crj.2022.008',
-        url: 'https://example.com/paper5'
       }
     ]
   },
@@ -136,20 +119,21 @@ const facultyData: Record<string, FacultyMember> = {
     designation: 'Assistant Professor',
     image: mimmaTabassum,
     education: [
-      'MS (University of Rajshahi)',
-      'BSc (University of Rajshahi)'
+      'B.Sc (Jahangirnagar University, Bangladesh)',
+      'M.Sc (Jahangirnagar University, Bangladesh)'
     ],
     email: 'mimma.stat@nstu.edu.bd',
-    phone: '+8801812345678',
-    bloodGroup: 'A+',
-    joiningDate: '2016-08-20',
+    phone: '+8801716383125',
+    bloodGroup: 'O+',
+    joiningDate: '2017-04-23',
     researchInterests: [
-      'Data Mining',
-      'Machine Learning',
-      'Statistical Computing',
-      'Big Data Analytics',
-      'Pattern Recognition'
+      'Regression Analysis',
+      'Biostatistics',
+      'Public Health',
+      'General Statistics',
+      'Estimation: Preliminary Test Approach to Shrinkage Estimator'
     ],
+    about: "Mimma Tabassum is an Assistant Professor of Statistics, Noakhali Science and Technology University, Noakhali, Bangladesh. She completed her BSc (Honors) and MSc in Statistics from Jahangirnagar University. In 2017, she joined in the Department of Statistics as Lecturer. She promoted as an Assistant Professor in 2019. Besides teaching, Tabassum enjoys research activities. As a result, she has published several research articles in peer-reviewed journals. Tabassum is passionate about collaborative and multidisciplinary research.",
     publications: [
       {
         id: 'tabassum-2023-1',
@@ -159,24 +143,6 @@ const facultyData: Record<string, FacultyMember> = {
         authors: 'Tabassum M, Mahmud S, Parvej MI',
         doi: '10.1234/edmj.2023.004',
         url: 'https://example.com/paper6'
-      },
-      {
-        id: 'tabassum-2022-1',
-        title: 'Clustering Algorithms for Big Data: A Comparative Analysis',
-        journal: 'Journal of Big Data Analytics',
-        year: 2022,
-        authors: 'Tabassum M, Hossain MR',
-        doi: '10.1234/jbda.2022.015',
-        url: 'https://example.com/paper7'
-      },
-      {
-        id: 'tabassum-2021-1',
-        title: 'Pattern Recognition in Agricultural Data: A Case Study in Bangladesh',
-        journal: 'Agricultural Statistics Journal',
-        year: 2021,
-        authors: 'Tabassum M, Rana MS, Begum N',
-        doi: '10.1234/asj.2021.009',
-        url: 'https://example.com/paper8'
       }
     ]
   },
@@ -185,42 +151,17 @@ const facultyData: Record<string, FacultyMember> = {
     name: 'Md. Mamun Miah',
     designation: 'Assistant Professor',
     image: mamunMiah,
-    education: [
-      'PhD (Ongoing) - BUET',
-      'MS (University of Dhaka)',
-      'BSc (University of Dhaka)'
-    ],
-    email: 'mamun.stat@nstu.edu.bd',
-    phone: '+8801912345678',
-    bloodGroup: 'O+',
-    joiningDate: '2017-01-10',
+    email: 'mamunmiah.615@gmail.com',
+    phone: '+8801798039406',
+    bloodGroup: 'B+',
+    joiningDate: '2017-11-20',
     researchInterests: [
-      'Applied Statistics',
-      'Experimental Design',
-      'Quality Control',
-      'Industrial Statistics',
-      'Operations Research'
+      'Econometric Modelling with Time Series',
+      'Biostatistics',
+      'Probability Distribution and Statistical Inference'
     ],
-    publications: [
-      {
-        id: 'miah-2023-1',
-        title: 'Quality Control Methods in Manufacturing Industries of Bangladesh',
-        journal: 'Industrial Statistics Journal',
-        year: 2023,
-        authors: 'Miah MM, Faruk MO',
-        doi: '10.1234/isj.2023.007',
-        url: 'https://example.com/paper9'
-      },
-      {
-        id: 'miah-2022-1',
-        title: 'Experimental Design for Optimizing Agricultural Yield',
-        journal: 'Journal of Agricultural Research',
-        year: 2022,
-        authors: 'Miah MM, Rana MS, Yeasmin M',
-        doi: '10.1234/jar.2022.011',
-        url: 'https://example.com/paper10'
-      }
-    ]
+    about: "Md. Mamun Miah is an Assistant Professor at the Department of Statistics. His work centers on Econometric Modelling with Time Series, Biostatistics, and Probability Distribution and Statistical Inference. He is passionate about applying statistical methods to solve real-world problems.",
+    publications: []
   },
   'mohammad-omar-faruk': {
     id: 'mohammad-omar-faruk',
@@ -228,40 +169,24 @@ const facultyData: Record<string, FacultyMember> = {
     designation: 'Assistant Professor',
     image: omarFaruk,
     education: [
-      'MS (University of Chittagong)',
-      'BSc (University of Chittagong)'
+      'M.S. (University of Chittagong)',
+      'B.Sc. (University of Chittagong)'
     ],
-    email: 'omar.stat@nstu.edu.bd',
-    phone: '+8801612345678',
-    bloodGroup: 'AB+',
-    joiningDate: '2017-06-15',
+    email: 'omarfaruk.stat@nstu.edu.bd',
+    phone: '+8801676879060',
+    bloodGroup: 'A+',
+    joiningDate: '2017-11-20',
     researchInterests: [
-      'Time Series Analysis',
-      'Forecasting Methods',
-      'Financial Statistics',
-      'Risk Analysis',
-      'Econometrics'
+      'Biostatistics',
+      'Demography',
+      'Epidemiology',
+      'Public Health',
+      'Impact of Environmental Factors on Human Disease',
+      'Renewable Energy Extraction Strategy from Biomass and Animal Residue through Statistical Approach',
+      'Data Science, and Machine Learning'
     ],
-    publications: [
-      {
-        id:  'faruk-2023-1',
-        title: 'Forecasting Stock Market Trends Using ARIMA Models',
-        journal: 'Financial Statistics Review',
-        year: 2023,
-        authors: 'Faruk MO, Parvej MI',
-        doi: '10.1234/fsr.2023.003',
-        url: 'https://example.com/paper11'
-      },
-      {
-        id: 'faruk-2022-1',
-        title: 'Time Series Analysis of Climate Data in Bangladesh',
-        journal: 'Environmental Statistics Journal',
-        year: 2022,
-        authors: 'Faruk MO, Rana MS, Hossain S',
-        doi: '10.1234/esj.2022.014',
-        url: 'https://example.com/paper12'
-      }
-    ]
+    about: "I have completed my M.S. and B.Sc.(Honours) degree in Statistics from the University of Chittagong. I joined as a lecturer at the Department of Statistics in 2017 and currently working as an assistant professor in the same Department of Noakhali Science and Technology University. I am also acting as Assistant Director at the Department of Student Counselling and Guidance. I mainly focus on teaching, learning, and research activities through friendly teamwork with the development of new ideas, methods, and theories. I with my department trying to run with this competitive runway to teach and learn new knowledge and apply them in the real-world field. Creating new knowledge and inventing new statistical approaches is the pathway of my research.",
+    publications: []
   },
   'md-iftakhar-parvej': {
     id: 'md-iftakhar-parvej',
@@ -269,40 +194,21 @@ const facultyData: Record<string, FacultyMember> = {
     designation: 'Assistant Professor',
     image: iftekharParvej,
     education: [
-      'MS (University of Dhaka)',
-      'BSc (University of Dhaka)'
+      'B.sc (Jahangirnagar University)',
+      'M.Sc (Jahangirnagar University)'
     ],
     email: 'iftakhar.stat@nstu.edu.bd',
-    phone: '+8801512345678',
+    phone: '+8801719157546',
     bloodGroup: 'B+',
-    joiningDate: '2018-02-20',
+    joiningDate: '2018-12-03',
     researchInterests: [
-      'Bayesian Statistics',
-      'Statistical Learning',
-      'Data Science',
-      'Computational Statistics',
-      'Statistical Software Development'
+      'Demography',
+      'Multivariate Analysis',
+      'Statistical Inference',
+      'Public Health'
     ],
-    publications: [
-      {
-        id: 'parvej-2023-1',
-        title: 'Bayesian Approaches to Small Area Estimation',
-        journal: 'Journal of Statistical Computation',
-        year: 2023,
-        authors: 'Parvej MI, Mahmud S',
-        doi: '10.1234/jsc.2023.006',
-        url: 'https://example.com/paper13'
-      },
-      {
-        id: 'parvej-2022-1',
-        title: 'Statistical Learning Methods for Classification Problems',
-        journal: 'Machine Learning and Statistics',
-        year: 2022,
-        authors: 'Parvej MI, Tabassum M, Faruk MO',
-        doi: '10.1234/mls.2022.009',
-        url: 'https://example.com/paper14'
-      }
-    ]
+    about: "I am Md. Iftakhar Parvej serving as Assistant Professor in the Department of Statistics. I have completed my BSc and MSc from Jahangirnagar University.",
+    publications: []
   },
   'md-rasel-hossain': {
     id: 'md-rasel-hossain',
@@ -324,26 +230,8 @@ const facultyData: Record<string, FacultyMember> = {
       'Population Statistics',
       'Environmental Statistics'
     ],
-    publications: [
-      {
-        id: 'hossain-2023-1',
-        title: 'Multivariate Analysis of Genetic Data in Bangladesh',
-        journal: 'Genetic Statistics Journal',
-        year: 2023,
-        authors: 'Hossain MR, Akter T',
-        doi: '10.1234/gsj.2023.008',
-        url: 'https://example.com/paper15'
-      },
-      {
-        id: 'hossain-2022-1',
-        title: 'Statistical Methods in Bioinformatics: Current Trends',
-        journal: 'Bioinformatics and Statistics',
-        year: 2022,
-        authors: 'Hossain MR, Tabassum M, Yeasmin M',
-        doi: '10.1234/bas.2022.013',
-        url: 'https://example.com/paper16'
-      }
-    ]
+    about: "Md. Rasel Hossain is an Assistant Professor in the Department of Statistics. His research focuses on Multivariate Analysis, Statistical Genetics, Bioinformatics, Population Statistics, and Environmental Statistics. He is committed to interdisciplinary research and teaching.",
+    publications: []
   },
   'tahmina-akter': {
     id: 'tahmina-akter',
@@ -365,26 +253,8 @@ const facultyData: Record<string, FacultyMember> = {
       'Clinical Data Analysis',
       'Health Research Methods'
     ],
-    publications: [
-      {
-        id: 'akter-2023-1',
-        title: 'Statistical Analysis of Public Health Data in Rural Bangladesh',
-        journal: 'Public Health Statistics',
-        year: 2023,
-        authors: 'Akter T, Begum N',
-        doi: '10.1234/phs.2023.005',
-        url: 'https://example.com/paper17'
-      },
-      {
-        id: 'akter-2022-1',
-        title: 'Epidemiological Models for Disease Prediction',
-        journal: 'Epidemiology Journal',
-        year: 2022,
-        authors: 'Akter T, Rana MS, Hossain MR',
-        doi: '10.1234/ej.2022.010',
-        url: 'https://example.com/paper18'
-      }
-    ]
+    about: "Tahmina Akter is a Lecturer in the Department of Statistics. Her areas of interest include Biostatistics, Public Health Statistics, Epidemiology, Clinical Data Analysis, and Health Research Methods. She is passionate about using statistics to improve public health outcomes.",
+    publications: []
   },
   'shohel-mahmud': {
     id: 'shohel-mahmud',
@@ -392,40 +262,24 @@ const facultyData: Record<string, FacultyMember> = {
     designation: 'Assistant Professor',
     image: shohelMahmud,
     education: [
-      'MS (BUET)',
-      'BSc (BUET)'
+      'MS (Jahangirnagar University)',
+      'BSc (Jahangirnagar University)'
     ],
-    email: 'shohel.mahmud@nstu.edu.bd',
-    phone: '+8801912345679',
-    bloodGroup: 'B+',
-    joiningDate: '2019-07-20',
+    email: 'smahmud.stat@nstu.edu.bd',
+    phone: '+8801933020140',
+    bloodGroup: 'O+',
     researchInterests: [
-      'Statistical Computing',
-      'Machine Learning',
-      'Deep Learning',
-      'Artificial Intelligence',
-      'Big Data Analytics'
+      'Probability Distribution',
+      'Hypothesis Testing',
+      'Design of Experiment',
+      'Time Series Analysis',
+      'Epidemiology',
+      'Biostatistics',
+      'Survival Analysis',
+      'Data Mining'
     ],
-    publications: [
-      {
-        id: 'mahmud-2023-1',
-        title: 'Deep Learning Approaches for Time Series Forecasting',
-        journal: 'Journal of Machine Learning and Applications',
-        year: 2023,
-        authors: 'Mahmud S, Parvej MI, Tabassum M',
-        doi: '10.1234/jmla.2023.007',
-        url: 'https://example.com/paper19'
-      },
-      {
-        id: 'mahmud-2022-1',
-        title: 'Statistical Computing Methods for Big Data Analysis',
-        journal: 'Computational Statistics Journal',
-        year: 2022,
-        authors: 'Mahmud S, Hossain S',
-        doi: '10.1234/csj.2022.012',
-        url: 'https://example.com/paper20'
-      }
-    ]
+    about: "Shohel Mahmud is an Assistant Professor in the Department of Statistics. His research interests are diverse, covering Probability Distribution, Hypothesis Testing, Design of Experiment, Time Series Analysis, Epidemiology, Biostatistics, Survival Analysis, and Data Mining. He is dedicated to exploring complex data and contributing to statistical science.",
+    publications: []
   },
   'sorif-hossain': {
     id: 'sorif-hossain',
@@ -433,40 +287,30 @@ const facultyData: Record<string, FacultyMember> = {
     designation: 'Lecturer',
     image: sorifHossain,
     education: [
-      'MS (University of Dhaka)',
-      'BSc (University of Dhaka)'
+      'MSc (Thesis) (Institute of Statistical Research and Training, University of Dhaka.)',
+      'BSc (Institute of Statistical Research and Training, University of Dhaka.)'
     ],
     email: 'sorif.stat@nstu.edu.bd',
-    phone: '+8801612345679',
-    bloodGroup: 'AB+',
-    joiningDate: '2020-02-10',
+    bloodGroup: 'B+',
+    joiningDate: '2022-01-24',
     researchInterests: [
-      'Sampling Theory',
-      'Survey Methodology',
-      'Official Statistics',
-      'Social Statistics',
-      'Demographic Analysis'
+      'Public health',
+      'Epidemiology',
+      'Biostatistics',
+      'Health Economics',
+      'Environmental health',
+      'and Artificial Intelligence.'
     ],
-    publications: [
-      {
-        id: 'hossain-s-2023-1',
-        title: 'Sampling Techniques for Social Surveys in Bangladesh',
-        journal: 'Survey Methodology Journal',
-        year: 2023,
-        authors: 'Hossain S, Faruk MO',
-        doi: '10.1234/smj.2023.009',
-        url: 'https://example.com/paper21'
-      },
-      {
-        id: 'hossain-s-2022-1',
-        title: 'Demographic Analysis of Population Census Data',
-        journal: 'Demographic Statistics',
-        year: 2022,
-        authors: 'Hossain S, Rana MS, Yeasmin M',
-        doi: '10.1234/ds.2022.016',
-        url: 'https://example.com/paper22'
-      }
-    ]
+    about: `It is always exciting for us at the department of statistics when we have new talent join the team! Having you on this platform is a great honor! Here's a big welcome to our new Lecturer Sorif Hossain. 
+    He is working closely with the statistics department team for better quality, supervised by our senior lecturer and professor. He obtained Masters' and bachelor's degrees from the University of Dhaka, Bangladesh with a concentration in Applied Statistics. 
+    He got the "Deans Award" and "Kazi Motahar Hossain Foundation Award" for his outstanding academic performance. He has around two years of professional experience with strong theoretical knowledge through his 5 years of academic accomplishments. 
+    As an academician and practitioner, he has several types of research in the field of public health and environmental sciences and spoke at several international workshops and conferences (ISCB40, Belgium; SWCRTS, Queen Mary University of London; ISCB43, Newcastle University, UK). 
+    He also worked as a reviewer for different publishers including Nature, SpringerNature, Dove Medical Press, BMJ Open, BMC Public Health, MOJ Public Health, Bentham Science, Frontiers in Public Health, and Mahidol University Press. 
+    In January 2022, he started working as a lecturer at the department of statistics. Starting his professional career in 2018 as a statistician at Eusuf and Associates and then worked as a research assistant at MOMODA FOUNDATION in 2019. 
+    He also worked as an officer (research and knowledge management) at DM WATCH, and afterward joined as a senior research assistant at James P Grant School of Public Health. Moreover, he also worked as a data scientist at Insightin Technology Bangladesh Limited. 
+    He is also very proficient in machine learning, modeling, and missing data handling, and has a very strong background in statistical software like R, STATA, and SPSS. Furthermore, he also plans to work on the SQL database system, and python coding. 
+    He always accepts the opportunity to improve his skills by adopting any advanced learning. His skills and talents will be a great addition to our statistics department. We are so excited to have him with us and look forward to working with him.`,
+    publications: []
   },
   'monira-yeasmin': {
     id: 'monira-yeasmin',
@@ -488,26 +332,8 @@ const facultyData: Record<string, FacultyMember> = {
       'Reliability Analysis',
       'Design of Experiments'
     ],
-    publications: [
-      {
-        id: 'yeasmin-2023-1',
-        title: 'Statistical Quality Control in Manufacturing Industries',
-        journal: 'Quality Control and Statistics',
-        year: 2023,
-        authors: 'Yeasmin M, Miah MM',
-        doi: '10.1234/qcs.2023.011',
-        url: 'https://example.com/paper23'
-      },
-      {
-        id: 'yeasmin-2022-1',
-        title: 'Reliability Analysis of Industrial Systems',
-        journal: 'Reliability Engineering Journal',
-        year: 2022,
-        authors: 'Yeasmin M, Hossain MR, Hossain S',
-        doi: '10.1234/rej.2022.018',
-        url: 'https://example.com/paper24'
-      }
-    ]
+    about: "Monira Yeasmin is a Lecturer in the Department of Statistics. Her research interests lie in Statistical Quality Control, Industrial Statistics, Process Optimization, Reliability Analysis, and Design of Experiments. She is focused on the practical application of statistics in industrial settings.",
+    publications: []
   }
 };
 

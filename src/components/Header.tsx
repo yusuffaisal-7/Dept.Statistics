@@ -47,9 +47,9 @@ const Header = () => {
                 />
               </div>
             </a>
-            <div className="hidden sm:block">
-              <h1 className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight">Department of Statistics</h1>
-              <p className="text-xs md:text-sm text-teal-100/90 font-medium">Noakhali Science and Technology University</p>
+            <div className="flex-shrink-0">
+              <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight">Department of Statistics</h1>
+              <p className="text-xs sm:text-sm text-teal-100/90 font-medium">Noakhali Science and Technology University</p>
             </div>
           </motion.div>
 

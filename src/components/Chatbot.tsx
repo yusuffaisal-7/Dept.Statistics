@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, Send, X, Loader2, Bot, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAllFacultyMembers } from '../data/facultyData';
+import { getAllBatches } from '../data/batchData';
 
 interface Message {
   text: string;
@@ -13,15 +14,52 @@ const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { 
-      text: "Hello! I'm ChiChat, your AI assistant for the Department of Statistics at NSTU. I can help you with information about our faculty, courses, research, publications, and more. How can I assist you today?", 
+      text: "Hello! I'm ChiChat, your AI assistant for the Department of Statistics at NSTU. I can help you with information about our faculty, courses, research, publications, batches, students, and more. I can also answer general questions about mathematics, statistics, science, and other topics. How can I assist you today?", 
       isUser: false 
     }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   // Get all faculty data for context
   const facultyMembers = getAllFacultyMembers();
+  const batches = getAllBatches();
+
+  // Calculate blood group statistics across all batches
+  const calculateBloodGroupStats = () => {
+    const bloodGroupCounts: { [key: string]: number } = {};
+    let totalStudents = 0;
+    let studentsWithBloodGroup = 0;
+
+    batches.forEach(batch => {
+      batch.students.forEach(student => {
+        totalStudents++;
+        if (student.bloodGroup) {
+          studentsWithBloodGroup++;
+          bloodGroupCounts[student.bloodGroup] = (bloodGroupCounts[student.bloodGroup] || 0) + 1;
+        }
+      });
+    });
+
+    return {
+      bloodGroupCounts,
+      totalStudents,
+      studentsWithBloodGroup,
+      studentsWithoutBloodGroup: totalStudents - studentsWithBloodGroup
+    };
+  };
+
+  const bloodGroupStats = calculateBloodGroupStats();
+
+  useEffect(() => {
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTo({
+        top: messagesContainerRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
+  }, [messages]);
 
   // Helper function to render clickable links in text
   const renderClickableLinks = (text: string) => {
@@ -65,6 +103,47 @@ ${publications}
 `;
     }).join('\n\n');
 
+    const batchInfo = batches.map(batch => {
+      // Calculate blood group statistics for this batch
+      const batchBloodGroupCounts: { [key: string]: number } = {};
+      let batchStudentsWithBloodGroup = 0;
+      
+      batch.students.forEach(student => {
+        if (student.bloodGroup) {
+          batchStudentsWithBloodGroup++;
+          batchBloodGroupCounts[student.bloodGroup] = (batchBloodGroupCounts[student.bloodGroup] || 0) + 1;
+        }
+      });
+
+      const studentList = batch.students.map(student => {
+        let studentInfo = `    - Name: ${student.name}, Roll: ${student.rollId}, Blood Group: ${student.bloodGroup || 'Not provided'}`;
+        
+        // Special note for Israt Jahan Easha
+        if (student.rollId === 'BFH2015016F' && student.name === 'Israt Jahan Easha') {
+          studentInfo += ' (Highest Scorer in 4th Batch)';
+        }
+        
+        return studentInfo;
+      }).join('\n');
+      
+      const bloodGroupStats = Object.entries(batchBloodGroupCounts).map(([bloodGroup, count]) => 
+        `      ${bloodGroup}: ${count} students`
+      ).join('\n');
+      
+      return `
+  Batch No: ${batch.batchNo} (${batch.name})
+    - Session: ${batch.session}
+    - Advisor: ${batch.advisor}
+    - Total Students: ${batch.totalStudents} (Male: ${batch.maleStudents}, Female: ${batch.femaleStudents})
+    - Graduation Year: ${batch.graduationYear}
+    - Blood Group Distribution:
+${bloodGroupStats}
+    - Students without blood group data: ${batch.totalStudents - batchStudentsWithBloodGroup}
+    - Students:
+  ${studentList}
+      `;
+    }).join('\n\n');
+
     return `
 DEPARTMENT OF STATISTICS - NOAKHALI SCIENCE AND TECHNOLOGY UNIVERSITY (NSTU)
 
@@ -73,6 +152,17 @@ Department Information:
 - Location: Bir Sreshtho Shahid Mohammad Ruhul Amin Auditorium, 2nd floor, NSTU, Noakhali-3814, Bangladesh
 - Contact: statistics@nstu.edu.bd, Phone: +880 1234567890
 - Office Hours: Sunday - Thursday: 9:00 AM - 5:00 PM
+
+University Leadership:
+- Vice Chancellor: Professor Dr. Mohammad Ismail
+  * Professor in Department of Applied Chemistry and Chemical Engineering, Dhaka University
+  * Appointed on September 5, 2024 for four years
+  * Appointed by His Excellency President Mohammed Shahabuddin as per NSTU Act 2001 Section 10(1)
+- Pro Vice Chancellor: Dr. Mohammad Razuanul Hoque
+  * Professor of Department of Biochemistry & Molecular Biology, University of Chittagong
+  * PhD from Tohoku University Graduate School of Life Sciences, Sendai, Japan
+  * Research focus: Optogenetic manipulation of neural activity using sodium-transporting rhodopsins
+  * First class (first position) in both B.Sc. (Hons.) and M.Sc. examinations
 
 Academic Programs:
 - Four-year B.Sc. (Honors) degree in Statistics
@@ -86,6 +176,16 @@ Department Highlights:
 
 Faculty Members and Their Details:
 ${facultyInfo}
+
+Batch and Student Information:
+${batchInfo}
+
+Blood Group Statistics (Department-wide):
+${Object.entries(bloodGroupStats.bloodGroupCounts).map(([bloodGroup, count]) => 
+  `- ${bloodGroup}: ${count} students`
+).join('\n')}
+- Students without blood group data: ${bloodGroupStats.studentsWithoutBloodGroup}
+- Total students: ${bloodGroupStats.totalStudents}
 
 Research Areas:
 - Statistical Modeling and Analysis
@@ -108,7 +208,7 @@ Graduates are prepared for careers in:
 - Environmental Statistics
 - Social Research and Demographics
 
-Chairman: Mamun Mia (Associate Professor & Chairman)
+Chairman: Md. Mamun Miah (Assistant Professor and Chairman)
 
 RECENT EVENTS AND ACTIVITIES:
 - Annual Statistics Day Celebration (October 20, 2024)
@@ -186,15 +286,25 @@ WEBSITE DEVELOPMENT INFORMATION:
               ${departmentContext}
               
               Instructions:
-              - Use ONLY the information provided above to answer questions
-              - If asked about something not in the provided data, politely say you don't have that information
-              - Be friendly, professional, and helpful
+              - You are ChiChat, a helpful AI assistant for the Department of Statistics at Noakhali Science and Technology University (NSTU)
+              - Use the provided department information to answer questions about NSTU, faculty, students, batches, and department-specific topics
+              - If asked about something not in the provided department data, use your general knowledge to provide helpful information
+              - Be friendly, professional, and helpful like Google Assistant
               - Keep responses concise but informative
+              - For initial queries, show limited/summary information
+              - If asked for "more details", "full list", "complete information", or "show all", then provide comprehensive data
               - If asked about faculty, provide their designation, research interests, and key publications
               - ALWAYS mention that users can view detailed faculty profiles by visiting the faculty page or clicking on faculty names
+              - When mentioning faculty members, ALWAYS include their profile link in the format /faculty/[faculty-id] so users can click to view detailed profiles
               - If asked about courses or programs, mention the B.Sc. (Honors) program and key subjects
+              - If asked about batch information, you can provide details about any batch, including the batch number, session, advisor, and a full list of students.
+              - If asked to find a specific student, search through all batches and provide their name, roll, and batch number.
+              - If asked about student achievements, mention that Israt Jahan Easha (Roll: BFH2015016F) is the highest scorer in the 4th batch.
+              - If asked about blood group statistics, provide the count of students with each blood group type across the entire department.
+              - If asked about specific blood groups (like A+, B+, O+, etc.), provide the exact count and percentage of students with that blood group.
+              - If asked about blood group distribution in a specific batch, provide the breakdown of blood groups for that particular batch.
+              - If asked about university leadership, provide information about the VC and Pro VC
               - If asked about contact information, provide the department email and location
-              - When mentioning faculty members, suggest visiting their profile page for more detailed information
               - If asked about recent events, mention the latest activities and celebrations
               - If asked about upcoming events, highlight the NSTU Research Fair 2025 on June 23, 2025
               - If asked about statistical days, mention World Statistics Day (October 20), Pi Day (March 14), and other relevant celebrations
@@ -202,6 +312,11 @@ WEBSITE DEVELOPMENT INFORMATION:
               - If asked about the website developer, creator, or who built this website, mention Engineer Yusuf Faisal, his company Fox-men Studio (launching soon), and his portfolio at https://yusuf-faisal.netlify.app/
               - If asked about ChiChat or the AI assistant, mention that it was developed by Yusuf Faisal as part of the website
               - When mentioning links, include the full URL so they can be made clickable
+              - Faculty profile links are working and clickable - users can click on them to navigate to individual faculty profile pages
+              - For general questions not related to the department, provide helpful and accurate information using your knowledge
+              - You can answer questions about mathematics, statistics, science, technology, current events, and general knowledge
+              - Be conversational and engaging while maintaining professionalism
+              - If you're not sure about something, acknowledge the limitation but try to provide helpful related information
               
               User question: ${userMessage}`
             }]
@@ -325,7 +440,10 @@ WEBSITE DEVELOPMENT INFORMATION:
             </div>
 
             {/* Messages */}
-            <div className="h-96 overflow-y-auto p-6 space-y-4 bg-gray-50">
+            <div
+              ref={messagesContainerRef}
+              className="h-96 overflow-y-auto p-6 space-y-4 bg-gray-50"
+            >
               {messages.map((message, index) => (
                 <motion.div
                   key={index}
