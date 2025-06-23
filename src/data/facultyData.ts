@@ -11,6 +11,7 @@ import shohelMahmud from '../image/Shohel Mahmud.jpg';
 import sorifHossain from '../image/Sorif.jpg';
 // Note: No image for Monira Yeasmin, will use a placeholder
 import placeholder from '../image/blank-profile-picture-973460_1920.png';
+import raselHossain from '../image/Rasel Sir.jpeg';
 
 export interface Publication {
   id: string;
@@ -215,7 +216,7 @@ const facultyData: Record<string, FacultyMember> = {
     id: 'md-rasel-hossain',
     name: 'Md. Rasel Hossain',
     designation: 'Assistant Professor',
-    image: placeholder,
+    image: raselHossain,
     education: [
       'MS (Islamic University)',
       'BSc (Islamic University)'
