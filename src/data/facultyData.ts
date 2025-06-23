@@ -83,10 +83,11 @@ const facultyData: Record<string, FacultyMember> = {
   },
   'najma-begum': {
     id: 'najma-begum',
-    name: 'Najma Begum',
+    name: 'Dr. Najma Begum',
     designation: 'Assistant Professor',
     image: najmaBegum,
     education: [
+      'PhD (Jahangirnagar University)',
       'MSc (Jahangirnagar University)',
       'BSc (Jahangirnagar University)'
     ],
@@ -216,11 +217,11 @@ const facultyData: Record<string, FacultyMember> = {
     designation: 'Assistant Professor',
     image: placeholder,
     education: [
-      'MS (SUST)',
-      'BSc (SUST)'
+      'MS (Islamic University)',
+      'BSc (Islamic University)'
     ],
     email: 'rasel.stat@nstu.edu.bd',
-    phone: '+8801712345679',
+    phone: '+8801750720209',
     bloodGroup: 'A+',
     joiningDate: '2018-08-10',
     researchInterests: [
@@ -236,11 +237,11 @@ const facultyData: Record<string, FacultyMember> = {
   'tahmina-akter': {
     id: 'tahmina-akter',
     name: 'Tahmina Akter',
-    designation: 'Lecturer',
+    designation: 'Assistant Professor',
     image: tahminaAkter,
     education: [
-      'MS (University of Chittagong)',
-      'BSc (University of Chittagong)'
+      'MS (Jahangirnagar University)',
+      'BSc (Jahangirnagar University)'
     ],
     email: 'tahmina.stat@nstu.edu.bd',
     phone: '+8801812345679',
@@ -253,7 +254,7 @@ const facultyData: Record<string, FacultyMember> = {
       'Clinical Data Analysis',
       'Health Research Methods'
     ],
-    about: "Tahmina Akter is a Lecturer in the Department of Statistics. Her areas of interest include Biostatistics, Public Health Statistics, Epidemiology, Clinical Data Analysis, and Health Research Methods. She is passionate about using statistics to improve public health outcomes.",
+    about: "Tahmina Akter is a Assistant Professor in the Department of Statistics. Her areas of interest include Biostatistics, Public Health Statistics, Epidemiology, Clinical Data Analysis, and Health Research Methods. She is passionate about using statistics to improve public health outcomes.",
     publications: []
   },
   'shohel-mahmud': {
@@ -287,8 +288,8 @@ const facultyData: Record<string, FacultyMember> = {
     designation: 'Lecturer',
     image: sorifHossain,
     education: [
-      'MSc (Thesis) (Institute of Statistical Research and Training, University of Dhaka.)',
-      'BSc (Institute of Statistical Research and Training, University of Dhaka.)'
+      'MSc (University of Dhaka)',
+      'BSc (University of Dhaka)'
     ],
     email: 'sorif.stat@nstu.edu.bd',
     bloodGroup: 'B+',
@@ -318,8 +319,8 @@ const facultyData: Record<string, FacultyMember> = {
     designation: 'Lecturer',
     image: placeholder,
     education: [
-      'MS (University of Rajshahi)',
-      'BSc (University of Rajshahi)'
+      'MS (University of Dhaka)',
+      'BSc (University of Dhaka)'
     ],
     email: 'monira.stat@nstu.edu.bd',
     phone: '+8801512345679',
